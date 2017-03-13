@@ -50,6 +50,7 @@ if (person3.event !== 'wedding') {
 if (person2.state !== 'Ohio') {
   person2.relationship = 'friend'
   person2.event = 'house warming'
+  person2.name = 'Rick'
 }
 
 // 5. The wedding was for Greg’s cousin.
@@ -57,7 +58,12 @@ if (person2.state !== 'Ohio') {
 // Greg’s sister but her event wasn’t on Wednesday night.
 
 if (person1.name === 'Ellen') {
+  person1.relationship = 'cousin'
   person1.event = 'wedding'
+  if (person1.event === 'wedding') {
+    person4.event = 'birthday'
+    person4.name = 'Heather'
+  }
 }
 
 if (person4.state !== 'Texas' && person4.day !== 'Wednesday') {
@@ -68,11 +74,14 @@ if (person4.state !== 'Texas' && person4.day !== 'Wednesday') {
 // 6. Walter’s event was one day earlier than the person whose last name was
 // DeForest but after the person who lived in Washington.
 // The anniversary was held in Montana.
-
-
-
-
-
+if (person2.lastName === 'DeForest' && person2.day === 'Saturday') {
+  person3.day = 'Friday'
+  person3.lastName = 'Gray'
+  person3.relationship = 'Father'
+  person3.name = 'Walter'
+  person3.event = 'anniversary'
+  person3.state = 'Montana'
+}
 
 // Step #3
 // Connect your data types with your logical statements in order to solve the

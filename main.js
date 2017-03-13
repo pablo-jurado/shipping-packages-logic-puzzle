@@ -21,7 +21,7 @@ var person4 = {}
 
 // 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio. The
 // birthday girl didn’t have her party on Friday.
-if (person1.relationship !== 'friend' && peron1.state !== 'Ohio') {
+if (person1.relationship !== 'friend' && person1.state !== 'Ohio') {
   person1.name = 'Ellen'
   person1.lastName = 'Fairview'
 }
@@ -36,20 +36,29 @@ if (ellen.day !== 'friday') {
 if (person2.lastName !== 'Bartley') {
   person2.name = 'Rick'
   person2.day = 'Saturday'
+  person2.lastName = 'DeForest'
 }
 
 // 3. Greg’s father wasn’t getting married, but his last name was Gray.
 if (person3.event !== 'wedding') {
   person3.lastName = 'Gray'
   person3.relationship = 'Father'
+  person3.name = 'Walter'
 }
 
 // 4. The friend having a house warming didn’t live in Ohio.
-
+if (person2.state !== 'Ohio') {
+  person2.relationship = 'friend'
+  person2.event = 'house warming'
+}
 
 // 5. The wedding was for Greg’s cousin.
 // Heather, who didn’t live in Texas, was
 // Greg’s sister but her event wasn’t on Wednesday night.
+
+if (person1.name === 'Ellen') {
+  person1.event = 'wedding'
+}
 
 if (person4.state !== 'Texas' && person4.day !== 'Wednesday') {
   person4.name = 'Heather'
@@ -57,8 +66,8 @@ if (person4.state !== 'Texas' && person4.day !== 'Wednesday') {
 }
 
 // 6. Walter’s event was one day earlier than the person whose last name was
-// DeForest but after the person who lived in Washington. The anniversary was
-// held in Montana.
+// DeForest but after the person who lived in Washington.
+// The anniversary was held in Montana.
 
 
 

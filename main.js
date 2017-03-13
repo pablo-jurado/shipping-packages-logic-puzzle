@@ -99,8 +99,8 @@ if (possFirstNames.indexOf('Ellen') !== (undefined || null)) {
   var lastNameIndex = possLastNames.indexOf('Fairview')
   person1.lastName = possLastNames[lastNameIndex]
   possLastNames[lastNameIndex] = null
+  person1.gender = 'She'
 }
-console.log(person1);
 
 // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
 if (possFirstNames.indexOf('Rick') !== (undefined || null)) {
@@ -111,8 +111,9 @@ if (possFirstNames.indexOf('Rick') !== (undefined || null)) {
   var dayIndex = possDays.indexOf('Saturday')
   person2.day = possDays[dayIndex]
   possDays[dayIndex] = null
+  person2.gender = 'He'
+
 }
-console.log(person2);
 
 // 3. Greg’s father wasn’t getting married, but his last name was Gray.
 if (possLastNames.indexOf('Gray') !== (undefined || null)) {
@@ -122,10 +123,9 @@ if (possLastNames.indexOf('Gray') !== (undefined || null)) {
   var relationIndex = possRelations.indexOf('father')
   person3.relationship = possRelations[relationIndex]
   possRelations[relationIndex] = null
-}
-console.log(person3);
-console.log(possRelations, possFirstNames, possLastNames);
+  person3.gender = 'He'
 
+}
 
 // 4. The friend having a house warming didn’t live in Ohio.
 if (person1.relationship !== 'friend' && person3.relationship === 'father') {
@@ -136,7 +136,6 @@ if (person1.relationship !== 'friend' && person3.relationship === 'father') {
   person2.event = possEvents[indexEvent]
   possEvents[indexEvent] = null
 }
-console.log(person2);
 
 // 5. The wedding was for Greg’s cousin.
 // Heather, who didn’t live in Texas, was
@@ -151,11 +150,37 @@ if (person1.name === 'Ellen') {
   possEvents[indexEvent] = null
 }
 
+if (person4.state !== 'Texas' ) {
+  var nameIndex = possFirstNames.indexOf('Heather')
+  person4.name = possFirstNames[nameIndex]
+  possFirstNames[nameIndex] = null
+
+  var indexRelation = possRelations.indexOf('sister')
+  person4.relationship = possRelations[indexRelation]
+  possRelations[indexRelation] = null
+  person4.gender = 'She'
+}
+
+// 6. Walter’s event was one day earlier than the person whose last name was
+// DeForest but after the person who lived in Washington.
+// The anniversary was held in Montana.
+
 function logPerson(person) {
   console.log(
     person.name + ' ' + person.lastName + ' lives in ' + person.state +
-    ' and is Greg\'s ' + person.relationship + '. She had a ' +
+    ' and is Greg\'s ' + person.relationship + '. ' + person.gender + ' had a ' +
     person.event + ' on ' + person.day +  '.'
   );
 }
-logPerson(person1);
+
+console.log('FirstNames', possFirstNames)
+console.log('LastNames', possLastNames)
+console.log('Relation', possRelations)
+console.log('States', possStates)
+console.log('Events', possEvents)
+console.log('Days', possDays)
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+logPerson(person1)
+logPerson(person2)
+logPerson(person3)
+logPerson(person4)

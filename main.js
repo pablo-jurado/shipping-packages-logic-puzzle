@@ -150,4 +150,12 @@ if (person1.name === 'Ellen') {
   person1.event = possEvents[indexEvent]
   possEvents[indexEvent] = null
 }
-console.log(possRelations, possFirstNames, possLastNames, possEvents, possDays, possStates);
+
+function logPerson(person) {
+  console.log(
+    person.name + ' ' + person.lastName + ' lives in ' + person.state +
+    ' and is Greg\'s ' + person.relationship + '. She had a ' +
+    person.event + ' on ' + person.day +  '.'
+  );
+}
+logPerson(person1);

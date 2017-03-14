@@ -4,6 +4,7 @@
 
 var friend = {
   id: 'friend',
+  gender: null,
   name: ['Ellen', 'Heather', 'Rick', 'Walter'],
   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
@@ -13,6 +14,7 @@ var friend = {
 
 var father = {
   id: 'father',
+  gender : 'He',
   name: ['Ellen', 'Heather', 'Rick', 'Walter'],
   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
@@ -22,6 +24,7 @@ var father = {
 
 var cousin = {
   id: 'cousin',
+  gender: null,
   name: ['Ellen', 'Heather', 'Rick', 'Walter'],
   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
@@ -31,6 +34,7 @@ var cousin = {
 
 var sister = {
   id: 'sister',
+  gender: 'She',
   name: ['Ellen', 'Heather', 'Rick', 'Walter'],
   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
@@ -52,6 +56,13 @@ function printProp (prop) {
   console.log(father.id, father[prop])
   console.log(cousin.id, cousin[prop])
   console.log(sister.id, sister[prop])
+}
+
+function logAll() {
+  console.log(friend)
+  console.log(father)
+  console.log(cousin)
+  console.log(sister)
 }
 
 // 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio.
@@ -101,6 +112,7 @@ eraseData(cousin, 'name', 'Heather')
 // Ellen Fairview didn’t live in Ohio.
 if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !== -1) {
   friend.name = friend.name.filter((item) => { return item === 'Ellen' })
+  friend.gender = 'She'
   friend.lastName = friend.lastName.filter((item) => { return item === 'Fairview' })
   friend.state = friend.state.filter((item) => { return item !== 'Ohio' })
   eraseData(sister, 'name', 'Ellen')
@@ -111,6 +123,7 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(cousin, 'lastName', 'Fairview')
 } else if (father.name.indexOf('Ellen') !== -1 && father.lastName.indexOf('Fairview') !== -1) {
   father.name = father.name.filter((item) => { return item === 'Ellen' })
+  father.gender = 'She'
   father.lastName = father.lastName.filter((item) => { return item === 'Fairview' })
   father.state = father.state.filter((item) => { return item !== 'Ohio' })
   eraseData(sister, 'name', 'Ellen')
@@ -121,6 +134,7 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(cousin, 'lastName', 'Fairview')
 } else if (sister.name.indexOf('Ellen') !== -1 && sister.lastName.indexOf('Fairview') !== -1) {
   sister.name = sister.name.filter((item) => { return item === 'Ellen' })
+  sister.gender = 'She'
   sister.lastName = sister.lastName.filter((item) => { return item === 'Fairview' })
   sister.state = sister.state.filter((item) => { return item !== 'Ohio' })
   eraseData(father, 'name', 'Ellen')
@@ -131,6 +145,7 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(cousin, 'lastName', 'Fairview')
 } else if (cousin.name.indexOf('Ellen') !== -1 && cousin.lastName.indexOf('Fairview') !== -1) {
   cousin.name = cousin.name.filter((item) => { return item === 'Ellen' })
+  cousin.gender = 'She'
   cousin.lastName = cousin.lastName.filter((item) => { return item === 'Fairview' })
   cousin.state = cousin.state.filter((item) => { return item !== 'Ohio' })
   eraseData(father, 'name', 'Ellen')
@@ -141,13 +156,21 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(sister, 'lastName', 'Fairview')
 }
 
+// 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
+
+
+
+// printProp('lastName')
+// printProp('day')
+
+logAll()
+
 // The birthday girl didn’t have her party on Friday.
 
 // 6. Walter’s event was one day earlier than the person whose last name was
 // DeForest but after the person who lived in Washington.
 // The anniversary was held in Montana.
 
-// 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
 // if (father.name.indexOf('Rick') !== -1 &&
 //     father.day.indexOf('Saturday') !== -1) {
 //   console.log(father.id)
@@ -158,9 +181,3 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
 //     friend.day.indexOf('Saturday') !== -1) {
 //   console.log(friend.id)
 // }
-
-printProp('name')
-printProp('lastName')
-printProp('day')
-printProp('events')
-printProp('state')

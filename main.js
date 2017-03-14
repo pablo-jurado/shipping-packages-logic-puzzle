@@ -149,7 +149,7 @@ if (person4.state !== 'Texas') {
   person4.gender = 'She'
 
   for (var i = 0; i < possEvents.length; i++) {
-    if(possEvents[i] === 'birthday') {
+    if (possEvents[i] === 'birthday') {
       person4.event = possEvents[i]
       possEvents[i] = null
     }
@@ -160,18 +160,18 @@ if (person4.state !== 'Texas') {
 // DeForest but after the person who lived in Washington.
 // The anniversary was held in Montana.
 if ((!person3.name)) {
-  for (var i = 0; i < possFirstNames.length; i++) {
-    if (possFirstNames[i] !== null) {
-      person3.name = possFirstNames[i]
-      possFirstNames[i] = null
+  for (var j = 0; j < possFirstNames.length; j++) {
+    if (possFirstNames[j] !== null) {
+      person3.name = possFirstNames[j]
+      possFirstNames[j] = null
     }
   }
 }
 
-for (var j = 0; j < possLastNames.length; j++) {
-  if (possLastNames[j] === 'DeForest') {
-    person2.lastName = possLastNames[j]
-    possLastNames[j] = null
+for (var k = 0; k < possLastNames.length; k++) {
+  if (possLastNames[k] === 'DeForest') {
+    person2.lastName = possLastNames[k]
+    possLastNames[k] = null
   }
 }
 
@@ -182,15 +182,24 @@ possStates[possStates.indexOf('Montana')] = null
 person3.day = possDays[possDays.indexOf('Friday')]
 possDays[possDays.indexOf('Friday')] = null
 
-for (var k = 0; k < possLastNames.length; k++) {
-  if (possLastNames[k] !== null) {
-    person4.lastName = possLastNames[k]
-    possLastNames[k] = null
+for (var l = 0; l < possLastNames.length; l++) {
+  if (possLastNames[l] !== null) {
+    person4.lastName = possLastNames[l]
+    possLastNames[l] = null
   }
 }
 
-logAllPersons()
-logData()
+person1.day = possDays[possDays.indexOf('Wednesday')]
+possDays[possDays.indexOf('Wednesday')] = null
+
+person1.state = possStates[possStates.indexOf('Washington')]
+possStates[possStates.indexOf('Washington')] = null
+
+person2.state = possStates[possStates.indexOf('Texas')]
+possStates[possStates.indexOf('Texas')] = null
+
+person4.state = possStates[possStates.indexOf('Ohio')]
+possStates[possStates.indexOf('Ohio')] = null
 
 function logPerson (person) {
   console.log(
@@ -215,6 +224,5 @@ function logData () {
   console.log('Events', possEvents)
   console.log('Days', possDays)
 }
-
-// logAllPersons()
 // logData()
+logAllPersons()

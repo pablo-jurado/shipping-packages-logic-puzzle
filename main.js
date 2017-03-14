@@ -100,8 +100,8 @@ eraseData(cousin, 'name', 'Heather')
 
 // Ellen Fairview didn’t live in Ohio.
 if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !== -1) {
-  friend.name = 'Ellen'
-  friend.lastName = 'Fairview'
+  friend.name = friend.name.filter((item) => { return item === 'Ellen' })
+  friend.lastName = friend.lastName.filter((item) => { return item === 'Fairview' })
   friend.state = friend.state.filter((item) => { return item !== 'Ohio' })
   eraseData(sister, 'name', 'Ellen')
   eraseData(father, 'name', 'Ellen')
@@ -110,8 +110,8 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(father, 'lastName', 'Fairview')
   eraseData(cousin, 'lastName', 'Fairview')
 } else if (father.name.indexOf('Ellen') !== -1 && father.lastName.indexOf('Fairview') !== -1) {
-  father.name = 'Ellen'
-  father.lastName = 'Fairview'
+  father.name = father.name.filter((item) => { return item === 'Ellen' })
+  father.lastName = father.lastName.filter((item) => { return item === 'Fairview' })
   father.state = father.state.filter((item) => { return item !== 'Ohio' })
   eraseData(sister, 'name', 'Ellen')
   eraseData(friend, 'name', 'Ellen')
@@ -120,8 +120,8 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(friend, 'lastName', 'Fairview')
   eraseData(cousin, 'lastName', 'Fairview')
 } else if (sister.name.indexOf('Ellen') !== -1 && sister.lastName.indexOf('Fairview') !== -1) {
-  sister.name = 'Ellen'
-  sister.lastName = 'Fairview'
+  sister.name = sister.name.filter((item) => { return item === 'Ellen' })
+  sister.lastName = sister.lastName.filter((item) => { return item === 'Fairview' })
   sister.state = sister.state.filter((item) => { return item !== 'Ohio' })
   eraseData(father, 'name', 'Ellen')
   eraseData(friend, 'name', 'Ellen')
@@ -130,8 +130,8 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(friend, 'lastName', 'Fairview')
   eraseData(cousin, 'lastName', 'Fairview')
 } else if (cousin.name.indexOf('Ellen') !== -1 && cousin.lastName.indexOf('Fairview') !== -1) {
-  cousin.name = 'Ellen'
-  cousin.lastName = 'Fairview'
+  cousin.name = cousin.name.filter((item) => { return item === 'Ellen' })
+  cousin.lastName = cousin.lastName.filter((item) => { return item === 'Fairview' })
   cousin.state = cousin.state.filter((item) => { return item !== 'Ohio' })
   eraseData(father, 'name', 'Ellen')
   eraseData(friend, 'name', 'Ellen')
@@ -140,9 +140,27 @@ if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !
   eraseData(friend, 'lastName', 'Fairview')
   eraseData(sister, 'lastName', 'Fairview')
 }
-printProp('lastName')
-// The birthday girl didn’t have her party on Friday.
-// 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
 
-// printProp('lastName')
-// console.log(friend, father, cousin, sister)
+// The birthday girl didn’t have her party on Friday.
+
+// 6. Walter’s event was one day earlier than the person whose last name was
+// DeForest but after the person who lived in Washington.
+// The anniversary was held in Montana.
+
+// 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
+// if (father.name.indexOf('Rick') !== -1 &&
+//     father.day.indexOf('Saturday') !== -1) {
+//   console.log(father.id)
+// } else if (cousin.name.indexOf('Rick') !== -1 &&
+//     cousin.day.indexOf('Saturday') !== -1) {
+//   console.log(cousin.id)
+// } else if (friend.name.indexOf('Rick') !== -1 &&
+//     friend.day.indexOf('Saturday') !== -1) {
+//   console.log(friend.id)
+// }
+
+printProp('name')
+printProp('lastName')
+printProp('day')
+printProp('events')
+printProp('state')

@@ -111,11 +111,11 @@ for (var i = 0; i < persons.length; i++) {
   }
 }
 
-logAll()
-
 // 6. Walter’s event was one day earlier than the person whose last name was
 // DeForest but after the person who lived in Washington.
 // The anniversary was held in Montana.
+
+logAll()
 
 // Step #3
 // Connect your data types with your logical statements in order to solve the

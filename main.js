@@ -46,6 +46,7 @@ var sister = {
 function eraseData (person, key, prop) {
   person[key] = person[key].filter((item) => { return item !== prop })
 }
+
 function printProp (prop) {
   console.log(friend.id, friend[prop])
   console.log(father.id, father[prop])
@@ -53,8 +54,8 @@ function printProp (prop) {
   console.log(sister.id, sister[prop])
 }
 
-// 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio. The
-// birthday girl didn’t have her party on Friday.
+// 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio.
+// The birthday girl didn’t have her party on Friday.
 friend.name = friend.name.filter((item) => { return item !== 'Ellen' })
 friend.lastName = friend.lastName.filter((item) => { return item !== 'Fairview' })
 
@@ -89,14 +90,59 @@ eraseData(friend, 'name', 'Heather')
 eraseData(father, 'name', 'Heather')
 eraseData(cousin, 'name', 'Heather')
 
-// 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
-printProp('lastName')
 // 6. Walter’s event was one day earlier than the person whose last name was
 // DeForest but after the person who lived in Washington.
 // The anniversary was held in Montana.
 
-// console.log(friend, father, cousin, sister)
-
 // Step #3
 // Connect your data types with your logical statements in order to solve the
-// puzzle. Use console.log to print the answers as sentences like:
+// puzzle. Use console.log to print the answers
+
+// Ellen Fairview didn’t live in Ohio.
+if (friend.name.indexOf('Ellen') !== -1 && friend.lastName.indexOf('Fairview') !== -1) {
+  friend.name = 'Ellen'
+  friend.lastName = 'Fairview'
+  friend.state = friend.state.filter((item) => { return item !== 'Ohio' })
+  eraseData(sister, 'name', 'Ellen')
+  eraseData(father, 'name', 'Ellen')
+  eraseData(cousin, 'name', 'Ellen')
+  eraseData(sister, 'lastName', 'Fairview')
+  eraseData(father, 'lastName', 'Fairview')
+  eraseData(cousin, 'lastName', 'Fairview')
+} else if (father.name.indexOf('Ellen') !== -1 && father.lastName.indexOf('Fairview') !== -1) {
+  father.name = 'Ellen'
+  father.lastName = 'Fairview'
+  father.state = father.state.filter((item) => { return item !== 'Ohio' })
+  eraseData(sister, 'name', 'Ellen')
+  eraseData(friend, 'name', 'Ellen')
+  eraseData(cousin, 'name', 'Ellen')
+  eraseData(sister, 'lastName', 'Fairview')
+  eraseData(friend, 'lastName', 'Fairview')
+  eraseData(cousin, 'lastName', 'Fairview')
+} else if (sister.name.indexOf('Ellen') !== -1 && sister.lastName.indexOf('Fairview') !== -1) {
+  sister.name = 'Ellen'
+  sister.lastName = 'Fairview'
+  sister.state = sister.state.filter((item) => { return item !== 'Ohio' })
+  eraseData(father, 'name', 'Ellen')
+  eraseData(friend, 'name', 'Ellen')
+  eraseData(cousin, 'name', 'Ellen')
+  eraseData(father, 'lastName', 'Fairview')
+  eraseData(friend, 'lastName', 'Fairview')
+  eraseData(cousin, 'lastName', 'Fairview')
+} else if (cousin.name.indexOf('Ellen') !== -1 && cousin.lastName.indexOf('Fairview') !== -1) {
+  cousin.name = 'Ellen'
+  cousin.lastName = 'Fairview'
+  cousin.state = cousin.state.filter((item) => { return item !== 'Ohio' })
+  eraseData(father, 'name', 'Ellen')
+  eraseData(friend, 'name', 'Ellen')
+  eraseData(sister, 'name', 'Ellen')
+  eraseData(father, 'lastName', 'Fairview')
+  eraseData(friend, 'lastName', 'Fairview')
+  eraseData(sister, 'lastName', 'Fairview')
+}
+printProp('lastName')
+// The birthday girl didn’t have her party on Friday.
+// 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
+
+// printProp('lastName')
+// console.log(friend, father, cousin, sister)

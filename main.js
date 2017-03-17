@@ -42,49 +42,45 @@ var persons = [
     events: ['anniversary', 'birthday', 'house warming', 'wedding']
   },
 
-  // {
-  //   id: 'Ellen',
-  //   name: 'Ellen',
-  //   gender: 'She',
-  //   relation: ['sister', 'cousin', 'father', 'Walter'],
-  //   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
-  //   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
-  //   day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  //   events: ['anniversary', 'birthday', 'house warming', 'wedding']
-  // },
-  //
-  // {
-  //   id: 'Heather',
-  //   name: 'Heather',
-  //   gender: 'She',
-  //   relation: ['sister', 'cousin', 'father', 'Walter'],
-  //   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
-  //   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
-  //   day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  //   events: ['anniversary', 'birthday', 'house warming', 'wedding']
-  // },
-  //
-  // {
-  //   id: 'Rick',
-  //   name: 'Rick',
-  //   gender: 'He',
-  //   relation: ['sister', 'cousin', 'father', 'Walter'],
-  //   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
-  //   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
-  //   day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  //   events: ['anniversary', 'birthday', 'house warming', 'wedding']
-  // },
-  //
-  // {
-  //   id: 'Walter',
-  //   name: 'Walter',
-  //   gender: 'He',
-  //   relation: ['sister', 'cousin', 'father', 'Walter'],
-  //   lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
-  //   state: ['Ohio', 'Montana', 'Texas', 'Washington'],
-  //   day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  //   events: ['anniversary', 'birthday', 'house warming', 'wedding']
-  // }
+  {
+    id: 'Ellen',
+    gender: 'She',
+    relation: ['sister', 'cousin', 'father', 'Walter'],
+    lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
+    state: ['Ohio', 'Montana', 'Texas', 'Washington'],
+    day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    events: ['anniversary', 'birthday', 'house warming', 'wedding']
+  },
+
+  {
+    id: 'Heather',
+    gender: 'She',
+    relation: ['sister', 'cousin', 'father', 'Walter'],
+    lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
+    state: ['Ohio', 'Montana', 'Texas', 'Washington'],
+    day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    events: ['anniversary', 'birthday', 'house warming', 'wedding']
+  },
+
+  {
+    id: 'Rick',
+    gender: 'He',
+    relation: ['sister', 'cousin', 'father', 'Walter'],
+    lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
+    state: ['Ohio', 'Montana', 'Texas', 'Washington'],
+    day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    events: ['anniversary', 'birthday', 'house warming', 'wedding']
+  },
+
+  {
+    id: 'Walter',
+    gender: 'He',
+    relation: ['sister', 'cousin', 'father', 'Walter'],
+    lastName: ['Bartley', 'DeForest', 'Fairview', 'Gray'],
+    state: ['Ohio', 'Montana', 'Texas', 'Washington'],
+    day: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    events: ['anniversary', 'birthday', 'house warming', 'wedding']
+  }
 ]
 
 // Step #2
@@ -93,17 +89,36 @@ var persons = [
 // on the logic of the statements.
 
 function eraseData (person, key, prop) {
-  person[key] = person[key].filter((item) => { return item !== prop })
+  if (person.hasOwnProperty(key)) {
+    person[key] = person[key].filter((item) => { return item !== prop })
+  }
 }
 
-//
-// function printProp (prop) {
-//   console.log(friend.id, friend[prop])
-//   console.log(father.id, father[prop])
-//   console.log(cousin.id, cousin[prop])
-//   console.log(sister.id, sister[prop])
-// }
-//
+function printProp (prop) {
+  console.log(friend.id, friend[prop])
+  console.log(father.id, father[prop])
+  console.log(cousin.id, cousin[prop])
+  console.log(sister.id, sister[prop])
+}
+
+
+
+function createAllOptions () {
+
+}
+
+function createAllSolutions () {
+
+}
+
+function isValidOption (option) {
+
+}
+
+function isValidSolution (week) {
+
+}
+
 function logAll () {
   for (var i = 0; i < persons.length; i++) {
     console.log(persons[i])
@@ -119,6 +134,10 @@ for (var i = 0; i < persons.length; i++) {
   }
   // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
   // 3. Greg’s father wasn’t getting married, but his last name was Gray.
+  if (persons[i].id === 'Rick') {
+    persons[i].lastName = persons[i].lastName.filter((item) => { return item !== 'Bartley' })
+    persons[i].day = persons[i].day.filter((item) => { return item === 'Saturday' })
+  }
   if (persons[i].id === 'father') {
     persons[i].lastName = persons[i].lastName.filter((item) => { return item === 'Gray' })
     persons[i].events = persons[i].events.filter((item) => { return item !== 'wedding' })

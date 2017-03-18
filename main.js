@@ -6,7 +6,7 @@ var names = ['Ellen', 'Heather', 'Rick', 'Walter'],
   lastNames = ['Bartley', 'DeForest', 'Fairview', 'Gray'],
   states = ['Ohio', 'Montana', 'Texas', 'Washington'],
   days = ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  relations = ['friend', 'causin', 'father', 'sister'],
+  relations = ['friend', 'cousin', 'father', 'sister'],
   genders = ['She', 'He'],
   events = ['anniversary', 'birthday', 'house warming', 'wedding']
 
@@ -48,27 +48,48 @@ var allOptions = createAllOptions()
 
 function isValidOption (person) {
   // 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio.
+  // 4. The friend having a house warming didn’t live in Ohio.
   // The birthday girl didn’t have her party on Friday.
   if (person.relation === 'friend' && person.name !== 'Ellen' &&
-  person.lastName !== 'Fairview') {
+  person.lastName !== 'Fairview' && person.events === 'house warming' &&
+  person.state !== 'Ohio') {
     return true
   } else if (person.name === 'Ellen' && person.lastName === 'Fairview' &&
   person.state !== 'Ohio' && person.gender === 'She') {
     return true
+  // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
+  } else if (person.name === 'Rick' && person.lastName !== 'Bartley' &&
+  person.day === 'Saturday' && person.gender === 'He') {
+    return true
+  // 3. Greg’s father wasn’t getting married, but his last name was Gray.
+  } else if (person.relation === 'father' && person.events !== 'wedding' &&
+  person.lastName === 'Gray' && person.gender === 'He') {
+    return true
+    // 5. The wedding was for Greg’s cousin.
+  } else if (person.relation === 'cousin' && person.events === 'wedding') {
+    return true
+  // Heather, who didn’t live in Texas, was
+  // Greg’s sister but her event wasn’t on Wednesday night.
+  } else if (person.name === 'Heather' && person.state !== 'Texas' &&
+  person.relation === 'sister' && person.day !== 'Wednesday' &&
+  person.gender === 'She') {
+    return true
+  // 6. Walter’s event was one day earlier than the person whose last name was
+  // DeForest but after the person who lived in Washington.
+  // The anniversary was held in Montana.
   } else {
     return false
   }
 }
 
-for (var i = 0; i < allOptions.length; i++) {
-  if (isValidOption(allOptions[i])) {
-    console.log(allOptions[i])
+function isValidSolution (solution) {
+  for (var i = 0; i < allOptions.length; i++) {
+    if (isValidOption(allOptions[i])) {
+      console.log(allOptions[i])
+    }
   }
 }
-
-// function isValidSolution (solution) {
-//
-// }
+isValidSolution(allOptions)
 
 // 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio.
 // The birthday girl didn’t have her party on Friday.

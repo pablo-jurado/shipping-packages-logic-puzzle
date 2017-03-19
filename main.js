@@ -113,8 +113,8 @@ function isValidOption (person) {
   person.state !== 'Montana' &&
   person.state !== 'Washington' &&
   person.relation === 'sister' &&
-  person.lastName === 'Bartley' &&
-  person.events === 'birthday' && // 2. Rick’s last name wasn’t Bartley
+  person.lastName === 'Bartley' && // 2. Rick’s last name wasn’t Bartley
+  person.events === 'birthday' &&
   person.day !== 'Wednesday' &&
   person.day !== 'Friday' && // heather Bartley sister birthday Thursday
   person.day !== 'Saturday' &&
@@ -128,8 +128,8 @@ function isValidOption (person) {
     return false
   }
 }
-
-function isValidSolution (solution) {
+// isValidSolution
+function filteredOptions (solution) {
   var solutions = []
   for (var i = 0; i < allOptions.length; i++) {
     if (isValidOption(allOptions[i])) {
@@ -139,7 +139,7 @@ function isValidSolution (solution) {
   return solutions
 }
 
-function logPersons(arr) {
+function logPersons (arr) {
   for (var i = 0; i < arr.length; i++) {
     var str = arr[i].name + ' ' +
     arr[i].lastName + ' lives in ' +
@@ -150,5 +150,26 @@ function logPersons(arr) {
   }
 }
 
-var newPersons = isValidSolution(allOptions)
-logPersons(newPersons)
+function filterMoreOptions (people) {
+  // 6. Walter’s event was one day earlier than the person whose last name was
+  // DeForest but after the person who lived in Washington.
+  var deForestDay = ''
+  for (var i = 0; i < people.length; i++) {
+    // console.log(people[i])
+    if (people[i].lastName === 'DeForest') {
+      deForestDay = people[i].day
+    }
+    var dayIndex = days.indexOf(deForestDay)
+    if (people[i].name === 'Walter' && people[i].day === days[dayIndex - 1]) {
+      console.log(people[i])
+    } else {
+      people[i]
+    }
+  }
+  console.log(people)
+}
+
+var newPersons = filteredOptions(allOptions)
+filterMoreOptions(newPersons)
+
+// logPersons(newPersons)

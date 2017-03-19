@@ -154,22 +154,29 @@ function filterMoreOptions (people) {
   // 6. Walter’s event was one day earlier than the person whose last name was
   // DeForest but after the person who lived in Washington.
   var deForestDay = ''
+  var dayIndex = ''
   for (var i = 0; i < people.length; i++) {
     // console.log(people[i])
     if (people[i].lastName === 'DeForest') {
       deForestDay = people[i].day
     }
-    var dayIndex = days.indexOf(deForestDay)
-    if (people[i].name === 'Walter' && people[i].day === days[dayIndex - 1]) {
-      console.log(people[i])
-    } else {
-      people[i]
+    dayIndex = days.indexOf(deForestDay)
+    if (people[i].name === 'Walter') {
+      if (people[i].day !== days[dayIndex - 1]) {
+        people.splice(i, 1)
+      }
     }
   }
-  console.log(people)
+  for (var j = 0; j < people.length; j++) {
+    if (people[j].name !== 'Walter') {
+      if (people[j].day === days[dayIndex - 1]) {
+        people.splice(j, 1)
+      }
+    }
+  }
 }
 
 var newPersons = filteredOptions(allOptions)
 filterMoreOptions(newPersons)
 
-// logPersons(newPersons)
+logPersons(newPersons)

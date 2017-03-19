@@ -49,30 +49,35 @@ var allOptions = createAllOptions()
 function isValidOption (person) {
   // 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio.
   // 4. The friend having a house warming didn’t live in Ohio.
-  // The birthday girl didn’t have her party on Friday.
   if (person.relation === 'friend' && person.name !== 'Ellen' &&
-  person.lastName !== 'Fairview' && person.events === 'house warming' &&
-  person.state !== 'Ohio') {
+  person.name !== 'Heather' && person.lastName !== 'Fairview' &&
+  person.lastName !== 'Gray' && person.events === 'house warming' &&
+  person.state !== 'Ohio' && person.state !== 'Montana' && person.gender === 'He') {
     return true
+  // 5. The wedding was for Greg’s cousin.
   } else if (person.name === 'Ellen' && person.lastName === 'Fairview' &&
-  person.state !== 'Ohio' && person.gender === 'She') {
+  person.state !== 'Ohio' && person.relation !== 'friend' &&
+  person.relation !== 'father' && person.relation !== 'sister' &&   // 'causin' 'wedding'
+  person.events === 'wedding' && person.day !== 'Saturday' &&
+  person.state !== 'Montana' && person.gender === 'She') {
     return true
-  // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
+  // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night. //
   } else if (person.name === 'Rick' && person.lastName !== 'Bartley' &&
-  person.day === 'Saturday' && person.gender === 'He') {
+  person.lastName !== 'Fairview' && person.day === 'Saturday' &&
+  person.gender === 'He') {
     return true
   // 3. Greg’s father wasn’t getting married, but his last name was Gray.
   } else if (person.relation === 'father' && person.events !== 'wedding' &&
-  person.lastName === 'Gray' && person.gender === 'He') {
+  person.lastName === 'Gray' && person.name !== 'Ellen' &&
+  person.name !== 'Heather' && person.gender === 'He') {
     return true
-    // 5. The wedding was for Greg’s cousin.
-  } else if (person.relation === 'cousin' && person.events === 'wedding') {
-    return true
+  // The birthday girl didn’t have her party on Friday.
   // Heather, who didn’t live in Texas, was
   // Greg’s sister but her event wasn’t on Wednesday night.
   } else if (person.name === 'Heather' && person.state !== 'Texas' &&
-  person.relation === 'sister' && person.day !== 'Wednesday' &&
-  person.gender === 'She') {
+  person.state !== 'Montana' && person.relation === 'sister' && person.day !== 'Wednesday' &&
+  person.lastName === 'Bartley' && person.events === 'birthday' && // 2. Rick’s last name wasn’t Bartley
+  person.day !== 'Saturday' && person.gender === 'She') {
     return true
   // 6. Walter’s event was one day earlier than the person whose last name was
   // DeForest but after the person who lived in Washington.

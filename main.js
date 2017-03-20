@@ -104,28 +104,18 @@ function isValidOption (person) {
   if (person.name === 'Heather' && person.events !== 'birthday') return false
   if (person.name !== 'Heather' && person.events === 'birthday') return false
 
-  // father wasn’t getting married, wedding was for cousin(Ellen),
-  // birthday for sister (Heather) and friend having a house warming
-  // so anniversary was for father
-  if (person.events === 'anniversary' && person.relation !== 'father') return false
-  if (person.events !== 'anniversary' && person.relation === 'father') return false
+  // Heather birthday wasn't on Friday or Wednesday. Rick’s was on Saturday so...
+  if (person.name !== 'Heather' && person.day === 'Thursday') return false
 
-  // "Walter's event was one day earlier than the person whose last name was DeForest"
+  // Walter’s event was one day earlier than the person whose last name was DeForest but after the person who lived in Washington
   if (person.name === 'Walter' && person.lastName === 'DeForest') return false
-
-  // Walter's event was after the person who lived in Washington
   if (person.name === 'Walter' && person.state === 'Washington') return false
-  if (person.name === 'Walter' && person.gender !== 'He') return false
-
-  // Person with last name DeForest do not lives in Washington
   if (person.lastName === 'DeForest' && person.state === 'Washington') return false
-  if (person.lastName === 'DeForest' && person.name === 'Walter') return false
+  if (person.name === 'Walter' && person.gender !== 'He') return false
 
   // The anniversary was held in Montana.
   if (person.events === 'anniversary' && person.state !== 'Montana') return false
   if (person.state === 'Montana' && person.events !== 'anniversary') return false
-
-  // repeat options
 
   return true
 }

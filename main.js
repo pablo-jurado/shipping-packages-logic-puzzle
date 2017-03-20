@@ -66,7 +66,7 @@ function isValidOption (person) {
 
   // The birthday girl didn’t have her party on Friday.
   if (person.gender === 'He' && person.events === 'birthday') return false
-  if (person.events === 'birthday' && person.day !== 'Friday') return false
+  if (person.events === 'birthday' && person.day === 'Friday') return false
 
   // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
   if (person.name === 'Rick' && person.lastName === 'Bartley') return false
@@ -88,8 +88,6 @@ function isValidOption (person) {
   // The wedding was for Greg’s cousin.
   if (person.relation === 'cousin' && person.events !== 'wedding') return false
   if (person.relation !== 'cousin' && person.events === 'wedding') return false
-  // 3. Greg’s father wasn’t getting married, but his last name was Gray.
-  if (person.relation === 'cousin' && person.lastName === 'Gray') return false
 
   // Heather, who didn’t live in Texas, was Greg’s sister but her event wasn’t on Wednesday night.
   if (person.relation === 'sister' && person.name !== 'Heather') return false
@@ -98,11 +96,24 @@ function isValidOption (person) {
   if (person.name === 'Heather' && person.day === 'Wednesday') return false
   if (person.name === 'Heather' && person.gender !== 'She') return false
 
+  // Heather is sister, Ellen is not friend and can not be father so....
+  if (person.name === 'Ellen' && person.relation !== 'cousin') return false
+  if (person.name !== 'Ellen' && person.relation === 'cousin') return false
+
+  // The wedding was for Greg’s cousin (Ellen). The birthday girl(Heather) didn’t have her party on Friday.
+  if (person.name === 'Heather' && person.events !== 'birthday') return false
+  if (person.name !== 'Heather' && person.events === 'birthday') return false
+
+  // father wasn’t getting married, wedding was for cousin(Ellen),
+  // birthday for sister (Heather) and friend having a house warming
+  // so anniversary was for father
+  if (person.events === 'anniversary' && person.relation !== 'father') return false
+  if (person.events !== 'anniversary' && person.relation === 'father') return false
+
   // "Walter's event was one day earlier than the person whose last name was DeForest"
   if (person.name === 'Walter' && person.lastName === 'DeForest') return false
 
   // Walter's event was after the person who lived in Washington
-  // if (person.name === 'Walter' && person.day === 'Wednesday') return false
   if (person.name === 'Walter' && person.state === 'Washington') return false
   if (person.name === 'Walter' && person.gender !== 'He') return false
 
@@ -169,5 +180,5 @@ function filterMoreOptions (people) {
 var newPersons = filteredOptions(allOptions)
 console.log(newPersons.length)
 
-//filterMoreOptions(newPersons)
+// filterMoreOptions(newPersons)
 logPersons(newPersons)

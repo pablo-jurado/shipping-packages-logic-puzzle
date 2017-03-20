@@ -48,86 +48,30 @@ var allOptions = createAllOptions()
 // console.log(allOptions)
 
 function isValidOption (person) {
+
   // 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio.
-  // 4. The friend having a house warming didn’t live in Ohio.
+  if (person.relation === 'friend' && person.name !== 'Ellen') return false
+  if (person.relation === 'friend' && person.lastName !== 'Fairview') return false
+  if (person.name === 'Ellen' && person.lastName !== 'Fairview') return false
+  if (person.name !== 'Ellen' && person.lastName === 'Fairview') return false
+  if (person.name === 'Ellen' && person.state === 'Ohio') return false
+
+  // The birthday girl didn’t have her party on Friday.
+
   // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
-  if (person.relation === 'friend' &&
-  person.name !== 'Ellen' &&
-  person.name !== 'Heather' &&
-  person.name === 'Rick' &&
-  person.lastName !== 'Fairview' &&
-  person.lastName !== 'Gray' &&
-  person.lastName !== 'Bartley' &&
-  person.lastName === 'DeForest' &&
-  person.state !== 'Ohio' &&
-  person.state !== 'Montana' &&
-  person.day !== 'Thursday' &&
-  person.day === 'Saturday' &&
-  person.events !== 'wedding' &&
-  person.events !== 'birthday' &&
-  person.events === 'house warming' &&
-  person.state !== 'Washington' &&   // DeForest but after the person who lived in Washington.
-  person.gender === 'He') {
-    return true
-  // 1. Ellen Fairview, who didn’t live in Ohio.
-  // 5. The wedding was for Greg’s cousin.
-  } else if (person.name === 'Ellen' &&
-  person.lastName === 'Fairview' &&
-  person.relation !== 'friend' &&
-  person.relation !== 'father' &&
-  person.relation !== 'sister' &&   // 'causin' 'wedding'
-  person.events === 'wedding' &&
-  person.day !== 'Saturday' &&
-  person.day !== 'Thursday' &&
-  person.state !== 'Ohio' &&
-  person.state !== 'Montana' &&
-  person.state !== 'Texas' &&
-  person.state === 'Washington' &&
-  person.gender === 'She') {
-    return true
-  // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night. //
-  // } else if (person.name === 'Rick' && person.lastName !== 'Bartley' &&
-  // person.lastName !== 'Fairview' && person.day === 'Saturday' &&
-  // person.events !== 'wedding' && person.events !== 'birthday' &&
-  // person.gender === 'He' && person.lastName === 'DeForest') {
-  //   return true
+  if (person.name === ' Rick' && person.name === 'Bartley') return false
+  if (person.name === ' Rick' && person.events !== 'Saturday') return false
 
   // 3. Greg’s father wasn’t getting married, but his last name was Gray.
-  // The anniversary was held in Montana.
-  } else if (person.relation === 'father' &&
-  person.events !== 'wedding' &&
-  person.lastName === 'Gray' &&
-  person.name !== 'Ellen' &&
-  person.name !== 'Heather' &&
-  person.name === 'Walter' &&
-  person.day !== 'Thursday' &&
-  person.day !== 'Saturday' &&
-  person.gender === 'He' &&
-  person.events === 'anniversary' &&
-  person.state === 'Montana') {
-    return true
-  // The birthday girl didn’t have her party on Friday.
-  // Heather, who didn’t live in Texas, was
-  // Greg’s sister but her event wasn’t on Wednesday night.
-  } else if (person.name === 'Heather' &&
-  person.state !== 'Texas' &&
-  person.state !== 'Montana' &&
-  person.state !== 'Washington' &&
-  person.relation === 'sister' &&
-  person.lastName === 'Bartley' && // 2. Rick’s last name wasn’t Bartley
-  person.events === 'birthday' &&
-  person.day !== 'Wednesday' &&
-  person.day !== 'Friday' && // heather Bartley sister birthday Thursday
-  person.day !== 'Saturday' &&
-  person.day === 'Thursday' &&
-  person.gender === 'She') {
-    return true
-  // 6. Walter’s event was one day earlier than the person whose last name was
-  // DeForest but after the person who lived in Washington.
-  // The anniversary was held in Montana.
-  } else {
-    return false
-  }
+  // 4. The friend having a house warming didn’t live in Ohio.
+  // 5. The wedding was for Greg’s cousin.  Heather, who didn’t live in Texas,
+  // was Greg’s sister but her event wasn’t on Wednesday night.
+  // 6. Walter’s event was one day earlier than the person whose
+  // last name was DeForest but after the person
+  // who lived in Washington. The anniversary was held in Montana.
+
+
+  return true
 }
 // isValidSolution
 function filteredOptions (solution) {
@@ -178,6 +122,6 @@ function filterMoreOptions (people) {
 }
 
 var newPersons = filteredOptions(allOptions)
-filterMoreOptions(newPersons)
+//filterMoreOptions(newPersons)
 
 logPersons(newPersons)

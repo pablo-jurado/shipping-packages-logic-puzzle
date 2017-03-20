@@ -1,5 +1,7 @@
 # Shipping Packages Logic Puzzle in JavaScript
 
+I am a front end engineering student at the Iron Yard. This is our logic puzzle homework.
+
 > This is a bonus assignment. Complete it at your own pace.
 
 Model the problem and solve this [Shipping Packages logic puzzle] using

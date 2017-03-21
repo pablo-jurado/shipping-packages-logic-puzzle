@@ -125,6 +125,10 @@ function isValidOption (person) {
   if (person.relation === 'father' && person.name !== 'Walter') return false
   if (person.relation !== 'father' && person.name === 'Walter') return false
 
+  // so if Rick didn’t live in Ohio, Montana, or Washington
+  if (person.name === 'Rick' && person.state !== 'Texas') return false
+  if (person.name !== 'Rick' && person.state === 'Texas') return false
+
   // The anniversary was held in Montana.
   if (person.events === 'anniversary' && person.state !== 'Montana') return false
   if (person.state === 'Montana' && person.events !== 'anniversary') return false

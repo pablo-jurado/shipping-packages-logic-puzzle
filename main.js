@@ -115,11 +115,15 @@ function isValidOption (person) {
   if (person.name === 'Walter' && person.gender !== 'He') return false
 
   // Walter’s event was one day earlier than the person whose last name was DeForest but after the person who lived in Washington
-  // The only options are Wednesday and Friday (Heather/Thursday , Rick/Saturday) and it can't be Wednesday so is Friday
-  if (person.lastName === 'DeForest' && person.day === 'Wednesday') return false
+  // The only options are Wednesday and Friday (Heather/Thursday , Rick/Saturday) and it can't be Wednesday(day earlier) so is Friday
+  if (person.lastName === 'DeForest' && person.day !== 'Saturday') return false
+  if (person.lastName !== 'DeForest' && person.day === 'Saturday') return false
   if (person.name === 'Walter' && person.day !== 'Friday') return false
   if (person.name !== 'Walter' && person.day === 'Friday') return false
 
+  // Now we know that Rick is DeForest so the Father is Walter Gray
+  if (person.relation === 'father' && person.name !== 'Walter') return false
+  if (person.relation !== 'father' && person.name === 'Walter') return false
 
   // The anniversary was held in Montana.
   if (person.events === 'anniversary' && person.state !== 'Montana') return false

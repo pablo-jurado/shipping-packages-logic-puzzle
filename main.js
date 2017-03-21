@@ -45,10 +45,7 @@ function createAllOptions () {
 
 var allOptions = createAllOptions()
 
-// console.log(allOptions)
-
 function isValidOption (person) {
-
 // 1. Greg’s friend wasn’t Ellen Fairview, who didn’t live in Ohio. The birthday girl didn’t have her party on Friday.
 // 2. Rick’s last name wasn’t Bartley but his event was on Saturday night.
 // 3. Greg’s father wasn’t getting married, but his last name was Gray.
@@ -129,13 +126,18 @@ function isValidOption (person) {
   if (person.name === 'Rick' && person.state !== 'Texas') return false
   if (person.name !== 'Rick' && person.state === 'Texas') return false
 
+  // at this point the options are Ohio and Washington
+  // and Ellen did not live in Ohio so..
+  if (person.state === 'Washington' && person.name !== 'Ellen') return false
+  if (person.state !== 'Washington' && person.name === 'Ellen') return false
+
   // The anniversary was held in Montana.
   if (person.events === 'anniversary' && person.state !== 'Montana') return false
   if (person.state === 'Montana' && person.events !== 'anniversary') return false
 
   return true
 }
-// isValidSolution
+
 function filteredOptions (solution) {
   var solutions = []
   for (var i = 0; i < allOptions.length; i++) {
@@ -157,34 +159,6 @@ function logPersons (arr) {
   }
 }
 
-function filterMoreOptions (people) {
-  // 6. Walter’s event was one day earlier than the person whose last name was
-  // DeForest but after the person who lived in Washington.
-  var deForestDay = ''
-  var dayIndex = ''
-  for (var i = 0; i < people.length; i++) {
-    // console.log(people[i])
-    if (people[i].lastName === 'DeForest') {
-      deForestDay = people[i].day
-    }
-    dayIndex = days.indexOf(deForestDay)
-    if (people[i].name === 'Walter') {
-      if (people[i].day !== days[dayIndex - 1]) {
-        people.splice(i, 1)
-      }
-    }
-  }
-  for (var j = 0; j < people.length; j++) {
-    if (people[j].name !== 'Walter') {
-      if (people[j].day === days[dayIndex - 1]) {
-        people.splice(j, 1)
-      }
-    }
-  }
-}
-
 var newPersons = filteredOptions(allOptions)
-console.log(newPersons.length)
 
-// filterMoreOptions(newPersons)
 logPersons(newPersons)
